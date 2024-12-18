@@ -10153,3 +10153,10 @@ ul.categories li {
      border-top-left-radius: 10px  !important;
      border-bottom-left-radius: 10px  !important;
 }
+
+.hs_blog_box1_img_wrapper img {
+    width: 100%;
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+    object-fit: contain; /* Ensures the image fits within its container */
+}

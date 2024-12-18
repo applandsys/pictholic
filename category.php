@@ -1,16 +1,15 @@
-<?php
-get_header(); ?>
+<?php get_header(); ?>
 <div class="prs_title_main_sec_wrapper">
     <div class="prs_title_img_overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="prs_title_heading_wrapper">
-                    <h2>Blog categories</h2>
+                    <!-- Display the Category Name Dynamically -->
+                    <h2><?php single_cat_title(); ?></h2>
                     <ul>
-                        <li><a href="#">Home</a>
-                        </li>
-                        <li>&nbsp;&nbsp; >&nbsp;&nbsp; Blog</li>
+                        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+                        <li>&nbsp;&nbsp; >&nbsp;&nbsp; <?php single_cat_title(); ?></li>
                     </ul>
                 </div>
             </div>
@@ -24,309 +23,71 @@ get_header(); ?>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="hs_blog_left_sidebar_main_wrapper">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="hs_blog_box1_main_wrapper">
-                                <div class="hs_blog_box1_img_wrapper">
-                                    <img src="images/content/blog_category/b1.jpg" alt="blog_img">
-                                </div>
-                                <div class="hs_blog_box1_cont_main_wrapper">
-                                    <div class="hs_blog_cont_heading_wrapper">
-                                        <ul>
-                                            <li>March 07, 2022</li>
-                                            <li>by Admin</li>
-                                        </ul>
-                                        <h2>Simplicity is about subtracting the obvious and adding part area  of
-                                            the meaningful</h2>
-                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-                                        <h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-                                    </div>
-                                </div>
-                                <div class="hs_blog_box1_bottom_cont_main_wrapper">
-                                    <div class="hs_blog_box1_bottom_cont_left">
-                                        <ul>
-                                            <li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
-                                            </li>
-                                            <li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
-                                            </li>
-                                            <li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="hs_blog_box1_bottom_cont_right">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-youtube-play"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper">
-                                <div class="hs_blog_box1_img_wrapper">
-                                    <div class="owl-carousel owl-theme">
-                                        <div class="item">
-                                            <img src="images/content/blog_category/b1.jpg" alt="blog_img">
+                        <?php if (have_posts()) : ?>
+                            <?php while (have_posts()) : the_post(); ?>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="hs_blog_box1_main_wrapper">
+                                        <!-- Featured Image -->
+                                        <div class="hs_blog_box1_img_wrapper">
+                                            <?php if (has_post_thumbnail()) : ?>
+                                                <a href="<?php the_permalink(); ?>">
+                                                    <?php the_post_thumbnail('custom-blog-thumbnail', ['alt' => get_the_title()]); ?>
+                                                </a>
+                                            <?php endif; ?>
                                         </div>
-                                        <div class="item">
-                                            <img src="images/content/blog_category/b2.jpg" alt="blog_img">
+                                        <!-- Post Content -->
+                                        <div class="hs_blog_box1_cont_main_wrapper">
+                                            <div class="hs_blog_cont_heading_wrapper">
+                                                <ul>
+                                                    <li><?php echo get_the_date(); ?></li>
+                                                    <li>by <?php the_author(); ?></li>
+                                                </ul>
+                                                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                                <p><?php the_excerpt(); ?></p>
+                                                <h5><a href="<?php the_permalink(); ?>">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
+                                            </div>
                                         </div>
-                                        <div class="item">
-                                            <img src="images/content/blog_category/b3.jpg" alt="blog_img">
+                                        <!-- Post Footer -->
+                                        <div class="hs_blog_box1_bottom_cont_main_wrapper">
+                                            <div class="hs_blog_box1_bottom_cont_left">
+                                                <ul>
+                                                    <li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hs_blog_box1_bottom_cont_right">
+                                                <ul>
+                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="hs_blog_box1_cont_main_wrapper">
-                                    <div class="hs_blog_cont_heading_wrapper">
-                                        <ul>
-                                            <li>March 07, 2022</li>
-                                            <li>by Admin</li>
-                                        </ul>
-                                        <h2>Simplicity is about subtracting the obvious and adding part area  of
-                                            the meaningful</h2>
-                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-                                        <h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-                                    </div>
-                                </div>
-                                <div class="hs_blog_box1_bottom_cont_main_wrapper">
-                                    <div class="hs_blog_box1_bottom_cont_left">
-                                        <ul>
-                                            <li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
-                                            </li>
-                                            <li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
-                                            </li>
-                                            <li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="hs_blog_box1_bottom_cont_right">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-youtube-play"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                            <?php endwhile; ?>
+                            <!-- Pagination -->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="pager_wrapper prs_blog_pagi_wrapper">
+                                    <?php
+                                    the_posts_pagination(array(
+                                        'mid_size' => 2,
+                                        'prev_text' => __('« Previous', 'textdomain'),
+                                        'next_text' => __('Next »', 'textdomain'),
+                                    ));
+                                    ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper">
-                                <div class="hs_blog_box1_img_wrapper">
-                                    <img src="images/content/blog_category/b3.jpg" alt="blog_img">
-                                    <div class="prs_ms_scene_img_overlay">
-                                        <ul>
-                                            <li><a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="hs_blog_box1_cont_main_wrapper">
-                                    <div class="hs_blog_cont_heading_wrapper">
-                                        <ul>
-                                            <li>March 07, 2022</li>
-                                            <li>by Admin</li>
-                                        </ul>
-                                        <h2>Simplicity is about subtracting the obvious and adding part area  of the meaningful</h2>
-                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-                                        <h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-                                    </div>
-                                </div>
-                                <div class="hs_blog_box1_bottom_cont_main_wrapper">
-                                    <div class="hs_blog_box1_bottom_cont_left">
-                                        <ul>
-                                            <li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
-                                            </li>
-                                            <li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
-                                            </li>
-                                            <li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="hs_blog_box1_bottom_cont_right">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-youtube-play"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                        <?php else : ?>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p>No posts found in this category.</p>
                             </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="hs_blog_box1_main_wrapper hs_blog_box2_main_wrapper">
-                                <div class="hs_blog_box1_img_wrapper">
-                                    <iframe src="https://www.youtube.com/embed/tqYDVMTjAzY"></iframe>
-                                </div>
-                                <div class="hs_blog_box1_cont_main_wrapper">
-                                    <div class="hs_blog_cont_heading_wrapper">
-                                        <ul>
-                                            <li>March 07, 2022</li>
-                                            <li>by Admin</li>
-                                        </ul>
-                                        <h2>Simplicity is about subtracting the obvious and adding part area  of
-                                            the meaningful</h2>
-                                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit sequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet the mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-                                        <h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-                                    </div>
-                                </div>
-                                <div class="hs_blog_box1_bottom_cont_main_wrapper">
-                                    <div class="hs_blog_box1_bottom_cont_left">
-                                        <ul>
-                                            <li><i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;<a href="#">1244 Likes</a>
-                                            </li>
-                                            <li><i class="fa fa-comments"></i> &nbsp;&nbsp;<a href="#">256 Comments</a>
-                                            </li>
-                                            <li><i class="fa fa-tags"></i> &nbsp;&nbsp;<a href="#">Presenter Movie</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="hs_blog_box1_bottom_cont_right">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-youtube-play"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="pager_wrapper prs_blog_pagi_wrapper">
-                                <ul class="pagination">
-                                    <li><a href="#"><i class="flaticon-left-arrow"></i></a>
-                                    </li>
-                                    <li class="btc_shop_pagi"><a href="#">01</a>
-                                    </li>
-                                    <li class="btc_shop_pagi"><a href="#">02</a>
-                                    </li>
-                                    <li class="btc_third_pegi btc_shop_pagi"><a href="#">03</a>
-                                    </li>
-                                    <li class="hidden-xs btc_shop_pagi"><a href="#">04</a>
-                                    </li>
-                                    <li><a href="#"><i class="flaticon-right-arrow"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                <div class="hs_blog_right_sidebar_main_wrapper">
-                    <div class="prs_mcc_left_searchbar_wrapper">
-                        <input type="text" placeholder="Search Movie">
-                        <button><i class="flaticon-tool"></i>
-                        </button>
-                    </div>
-                    <div class="prs_bc_right_about_wrapper">
-                        <img src="images/content/blog_category/side_img1.jpg" alt="side_img">
-                        <h2>About Presenter</h2>
-                        <p>Lorem ipsum dolor sit amet ue adipisicing elit, sed do eiuodor incididunt ut part.</p>
-                        <h5><a href="#">Read More <i class="fa fa-long-arrow-right"></i></a></h5>
-                    </div>
-                    <div class="prs_mcc_bro_title_wrapper">
-                        <h2>Category</h2>
-                        <ul>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">All <span>23,124</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Action <span>512</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Romantic <span>548</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Love <span>557</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Musical <span>554</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Drama <span>567</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Thriller <span>689</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">Horror <span>478</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="prs_mcc_bro_title_wrapper">
-                        <h2>Recent News</h2>
-                        <div class="hs_blog_right_recnt_cont_wrapper">
-                            <div class="hs_footer_ln_img_wrapper">
-                                <img src="images/content/blog_category/n1.jpg" alt="ln_img" />
-                            </div>
-                            <div class="hs_footer_ln_cont_wrapper">
-                                <h4>Lorem spum
-                                    menus.</h4>
-                                <p>12 May 2022</p>
-                            </div>
-                        </div>
-                        <div class="hs_blog_right_recnt_cont_wrapper hs_blog_right_recnt_cont_wrapper2">
-                            <div class="hs_footer_ln_img_wrapper">
-                                <img src="images/content/blog_category/n2.jpg" alt="ln_img" />
-                            </div>
-                            <div class="hs_footer_ln_cont_wrapper">
-                                <h4>Lorem spum
-                                    menus.</h4>
-                                <p>12 May 2022</p>
-                            </div>
-                        </div>
-                        <div class="hs_blog_right_recnt_cont_wrapper hs_blog_right_recnt_cont_wrapper2">
-                            <div class="hs_footer_ln_img_wrapper">
-                                <img src="images/content/blog_category/n3.jpg" alt="ln_img" />
-                            </div>
-                            <div class="hs_footer_ln_cont_wrapper">
-                                <h4>Lorem spum
-                                    menus.</h4>
-                                <p>12 May 2022</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prs_mcc_bro_title_wrapper">
-                        <h2>Archives</h2>
-                        <ul>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2012 <span>23,124</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2013 <span>512</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2014 <span>548</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2015 <span>557</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2016 <span>554</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2017 <span>567</span></a>
-                            </li>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a href="#">2022 <span>689</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="prs_blog_right_sub_btn_wrapper">
-                        <h2>Subscribe</h2>
-                        <input type="text" placeholder="Your email id">
-                        <ul>
-                            <li><a href="#">Subscribe</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <?php get_sidebar(); ?>
             </div>
         </div>
     </div>
