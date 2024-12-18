@@ -264,7 +264,7 @@ ul.colors li:hover p {
     z-index:10000;
 }
 .menu_fixed{
-    position:fixed;
+ /*   position:fixed; */
     background:#ff4444;
     -webkit-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.10);
     -moz-box-shadow:  0px 1px 20px 0px rgba(0, 0, 0, 0.10);
@@ -999,6 +999,7 @@ a.navbar-brand img { padding-right: 15px; }
 .prs_top_login_btn_wrapper{
     float:right;
     margin-right:10px;
+    margin-top: -10px;
 }
 .prs_slidebar_wrapper{
     float:right;
@@ -10096,3 +10097,59 @@ i:before{
     transition: all 0.5s;
 }
 /*---------------- st LogIn End --------------*/
+.navbar-default {
+    /* background-color: #f8f8f8; */
+    /* border-color: #e7e7e7; */
+}
+
+/* Custom Logo Styling */
+img.custom-logo  {
+    max-width: 100%;   /* Make the logo responsive */
+    height: auto;      /* Maintain aspect ratio */
+    width: 100px;      /* Set a specific width */
+}
+
+
+/* Logo size in the header */
+.header-logo img {
+    width: 200px;
+    height: auto;
+}
+
+/* Logo size in the footer */
+.footer-logo img {
+    width: 150px;
+    height: auto;
+}
+
+
+/**
+sidbar
+ */
+.sidebar {
+    border: 1px solid red;
+}
+
+ul.categories {
+    list-style-type: none;
+}
+
+ul.categories li {
+    margin-bottom: 10px;
+}
+
+.content-area {
+    width: 70%;
+    float: left;
+}
+
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0;
+     border-top-left-radius: 10px  !important;
+     border-bottom-left-radius: 10px  !important;
+}

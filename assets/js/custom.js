@@ -12,9 +12,6 @@
 
     // on ready function
     jQuery(document).ready(function($) {
-
-
-
 	 var xv_ww=$(window).width(),xv_slideshow=true;
     $(window).on('resize load', function() {
         xv_ww = $(window).width();
