@@ -48,19 +48,19 @@
                     <div class="prs_footer_cont1_wrapper prs_footer_cont1_wrapper_3">
                         <h2>BOOKING ONLINE</h2>
                         <ul>
-                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
+                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Movie Live Stream</a>
                             </li>
-                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
+                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Sports Live</a>
                             </li>
-                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
+                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Online Cam</a>
                             </li>
-                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
+                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Celebrity Bio</a>
                             </li>
-                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
+                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Movie Download</a>
                             </li>
-                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.hello.com</a>
+                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">Premium Video</a>
                             </li>
-                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">www.example.com</a>
+                            <li><i class="fa fa-circle"></i> &nbsp;&nbsp;<a href="#">News and Gossip</a>
                             </li>
                         </ul>
                     </div>
@@ -72,16 +72,15 @@
                         <ul>
                             <li>
                                 <a href="#">
-                                    <img src="images/content/f1.jpg" alt="footer_img">
+                                    <img src="<?php echo get_template_directory_uri();?>/assets/images/content/f1.jpg" alt="footer_img">
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="images/content/f2.jpg" alt="footer_img">
+                                    <img src="<?php echo get_template_directory_uri();?>/assets/images/content/f2.jpg" alt="footer_img">
                                 </a>
                             </li>
                         </ul>
-                        <h5><span>$50</span> Payback on App Download</h5>
                     </div>
                 </div>
             </div>
@@ -92,7 +91,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                     <div class="prs_bottom_footer_cont_wrapper">
-                        <p>Copyright 2022-23 <a href="#">Movie Pro</a> . All rights reserved - Design by <a href="#">Webstrot</a>
+                        <p>Copyright 2024-2025 <a href="#">PictHolic</a> . All rights reserved - Design by <a href="https://phenxlab.com">PhenixLab</a>
                         </p>
                     </div>
                 </div>

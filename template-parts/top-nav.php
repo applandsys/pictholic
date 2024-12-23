@@ -8,8 +8,11 @@
         <div class="clearfix"></div>
         <ul class="dl-menu">
             <li><a href="<?php get_site_url(); ?>">Home</a></li>
-            <li><a href="<?php get_site_url(); ?>/pictholic/blog">Blog</a></li>
-            <li class="parent"><a href="#">contact</a></li>
+            <li><a href="<?php get_site_url(); ?>/blog">All Post</a></li>
+            <li class="parent"><a href="<?php get_site_url(); ?>/movies">Movie</a></li>
+            <li class="parent"><a href="<?php get_site_url(); ?>/tv">TV</a></li>
+            <li class="parent"><a href="<?php get_site_url(); ?>/celebrity">Celebrity</a></li>
+            <li><a href="<?php get_site_url(); ?>/stories">Story</a></li>
         </ul>
     </div>
 </nav>

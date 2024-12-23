@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="<?php bloginfo( 'description' ); ?>" />
     <meta name="keywords" content="Movie Pro" />
-    <meta name="author" content="Tarique Mosharraf" />
+    <meta name="author" content="Tariq Musharraf" />
     <meta name="MobileOptimized" content="320" />
     <title><?php bloginfo( 'name' ); ?></title>
     <?php wp_head(); ?>
@@ -18,7 +18,6 @@
     </div>
 </div>
 <header>
-    <!-- prs navigation Start -->
     <div class="prs_navigation_main_wrapper">
         <div class="container-fluid">
             <div id="search_open" class="gc_search_box">
@@ -47,7 +46,8 @@
                 <div class="prs_top_login_btn_wrapper">
                     <div class="prs_animate_btn1">
                         <ul>
-                            <li><a href="#" class="button button--tamaya" data-text="sign up" data-toggle="modal" data-target="#myModal"><span>sign up</span></a>
+                            <li>
+<!--                                <a href="--><?php //echo site_url('/signup'); ?><!--" class="button button--tamaya" data-text="sign up" data-toggle="modal" data-target="#myModal"><span>sign up</span></a>-->
                             </li>
                         </ul>
                     </div>

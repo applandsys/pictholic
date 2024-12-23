@@ -63,15 +63,91 @@
                                 </ul>
                             </div>
                         </article>
-                    <?php endwhile; endif; ?>
+                    <?php endwhile; else : ?>
+                        <p>No posts found.</p>
+                    <?php endif; ?>
 
                     <!-- Comments Section -->
-                    <div class="comments-section">
-                        <?php
-                        if (comments_open() || get_comments_number()) :
-                            comments_template();
-                        endif;
-                        ?>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="prs_bs_comment_heading_wrapper">
+                            <h2>Comments</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="comment-list">
+                            <?php
+                            $comments = get_comments(array(
+                                'post_id' => get_the_ID(),
+                                'status' => 'approve', // Ensure only approved comments are fetched
+                            ));
+
+                            if (!empty($comments)) {
+                                foreach($comments as $comment) {
+                                    ?>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="hs_rs_comment_main_wrapper hs_rs_comment_main_wrapper2">
+<!--                                            <div class="hs_rs_comment_img_wrapper">-->
+<!--                                                <img src="images/content/blog_category/comm_img1.jpg" alt="comment_img">-->
+<!--                                            </div>-->
+                                            <div class="hs_rs_comment_img_cont_wrapper hs_rs_blog_single_comment_img_cont_wrapper">
+                                                <h2><?php echo $comment->comment_author;?><br> <span><?php echo $comment->comment_date;?></span> <a href="#"> - Reply</a></h2>
+                                                <p><?php $comment->comment_content;?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                            } else {
+                                echo '<p>No comments fetched.</p>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                    <!-- Leave a Comment Form -->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="prs_bs_comment_heading_wrapper prs_bs_leave_comment_heading_wrapper">
+                            <h2>Leave a Comment</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="comment-form-wrapper">
+                            <?php
+                            comment_form(array(
+                                'title_reply' => '',
+                                'label_submit' => 'Send a Comment',
+                                'comment_field' => '<div class="hs_kd_six_sec_input_wrapper"><textarea name="comment" rows="6" placeholder="Comments" required></textarea></div>',
+                                'fields' => array(
+                                    'author' => '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="hs_kd_six_sec_input_wrapper"><input type="text" name="author" placeholder="Name" required></div></div>',
+                                    'email' => '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="hs_kd_six_sec_input_wrapper"><input type="email" name="email" placeholder="Email" required></div></div>',
+                                ),
+                                'class_submit' => 'hs_kd_six_sec_btn',
+                            ));
+                            ?>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="prs_bs_comment_heading_wrapper">
+                            <h2>Comments</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="comment-list">
+                            <?php
+                            if (have_comments()) {
+                                wp_list_comments(array(
+                                    'style' => 'div',
+                                    'avatar_size' => 64, // Adjust avatar size if needed
+                                ));
+                            } else {
+                                echo '<p>No comments yet. Be the first to comment!</p>';
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>

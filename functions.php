@@ -10,6 +10,3 @@ add_action('wp_enqueue_scripts', 'tm_theme_enqueue_styles');
 add_action( 'customize_register', 'tm_theme_customize_register' );
 add_action('after_setup_theme', 'tm_theme_register_menu');
 add_filter('wp_list_categories', 'tm_add_icon_to_category_names');
-
-
-?>

@@ -6547,9 +6547,9 @@ body.active #mobile-nav {
     transition: all 0.5s;
 }
 .hs_kd_six_sec_btn{
-    float:left;
-    width:100px;
+    float:left;;
     margin-top:25px;
+
 }
 .hs_kd_six_sec_btn li a {
     float: left;
