@@ -14,7 +14,7 @@ get_header();
                     // Arguments for WP_Query
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; // Get current page number
                     $args = array(
-                        'post_type' => 'tv', // Replace with your custom post type slug
+                        'post_type' => 'person', // Replace with your custom post type slug
                         'posts_per_page' => 5,        // Number of posts per page
                         'paged' => $paged,            // Enable pagination
                     );
